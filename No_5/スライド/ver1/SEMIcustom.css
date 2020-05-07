@@ -1,0 +1,21 @@
+.rise-enabled .reveal .slides
+{
+    width: 100%;
+    padding-top: 75%;
+    font-size: 20px;
+    font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    font-family: "Ricty", monospace;
+}
+
+.rise-enabled .reveal .slides div.output_subarea>pre #code output
+{
+    color: white;
+    font-size: 8px;
+}
+
+.rise-enabled .reveal .slides code #code
+{
+   # background-color: transparent;
+    color: white;
+    font-size: 15px;
+}
