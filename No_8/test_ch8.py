@@ -4,21 +4,21 @@
 import numpy as np
 from numpy.testing import assert_array_equal
 import unittest
-from ch8_ver2 import sample_mean, sample_variance, sample_covariance_matrix, whitening_matrix
+from ch8_ver4 import sample_mean, sample_variance, sample_covariance_matrix, whitening_matrix
 
 #課題1 N個の観測値が格納されたベクトルを入力とし標本平均を求める関数を実装
 class TestSampleMean(unittest.TestCase):
     def test_sample_mean(self):
         exp = 72
-        act = sample_mean([90, 80, 40, 60, 90])
+        act = sample_mean([[90, 80, 40, 60, 90]])
         self.assertAlmostEqual(exp, act)
 
         exp = -15.0037
-        act = sample_mean([-37.76, -54.688, 21.018, -48.118, -37.029, 87.627, 18.147, -59.58, 23.107, -62.761])
+        act = sample_mean([[-37.76, -54.688, 21.018, -48.118, -37.029, 87.627, 18.147, -59.58, 23.107, -62.761]])
         self.assertAlmostEqual(exp, act)
 
         exp = -5.9776
-        act = sample_mean([-25.348, -54, -26.429, 87, -70.035, 90.534, -65.264, 90.276, -29, -22.427, 84, -63.724, -73, -90.247, 78])
+        act = sample_mean([[-25.348, -54, -26.429, 87, -70.035, 90.534, -65.264, 90.276, -29, -22.427, 84, -63.724, -73, -90.247, 78]])
         self.assertAlmostEqual(exp, act)
 
 
@@ -26,15 +26,15 @@ class TestSampleMean(unittest.TestCase):
 class TestSampleVariance(unittest.TestCase):
     def test_sample_variance(self):
         exp = 376
-        act = sample_variance([90, 80, 40, 60, 90])
+        act = sample_variance([[90, 80, 40, 60, 90]])
         self.assertAlmostEqual(exp, act)
 
         exp = 24.278
-        act = sample_variance([0.5,3.6,-0.6,-9.8,-4.4,6.1,5.1,7.4,0.3,2.8])
+        act = sample_variance([[0.5,3.6,-0.6,-9.8,-4.4,6.1,5.1,7.4,0.3,2.8]])
         self.assertAlmostEqual(exp, act)
 
         exp = 32.99705956
-        act = sample_variance([4.95,-5,7.75,5.48,-7,-0.98,-8.4,1.95,-0.86,-9,-4.43,6.46,4.82,8,1.62])
+        act = sample_variance([[4.95,-5,7.75,5.48,-7,-0.98,-8.4,1.95,-0.86,-9,-4.43,6.46,4.82,8,1.62]])
         self.assertAlmostEqual(exp, act)
 
 
