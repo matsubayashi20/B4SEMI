@@ -4,7 +4,7 @@
 import numpy as np
 from numpy.testing import assert_array_equal
 import unittest
-from ch8_ver4 import sample_mean, sample_variance, sample_covariance_matrix, whitening_matrix
+from ch8_ver7 import sample_mean, sample_variance, sample_covariance_matrix, whitening_matrix
 
 #課題1 N個の観測値が格納されたベクトルを入力とし標本平均を求める関数を実装
 class TestSampleMean(unittest.TestCase):
@@ -62,19 +62,20 @@ class TestSampleCovarianceMatrix(unittest.TestCase):
 #課題4 i行目にXiが格納された行列を白色化する行列Λ^(-1/2)U^(T)を求める関数を実装
 class TestWhiteningMatrix(unittest.TestCase):
     def test_whitening_matrix(self):
-        exp = np.array([[ 0.04095855 , 0.01482904], [-0.13536025 , 0.37387177]])
+        exp = np.array([[ 0.04095854983226044 , 0.0148290403118912], [0.1353602496881495 , -0.37387176887728213]])
         act = whitening_matrix([[40, 80, 90], [80, 90, 100]])
+
         for i in range(exp.shape[0]):
             for j in range(exp.shape[1]):
                 self.assertAlmostEqual(exp[i][j], act[i][j])
 
-        exp = np.array([[-0.01424567, 0.01131322, -0.01262022], [0.03135495, 0.00150386, -0.03404527], [0.03259725, 0.0783995, 0.03348444]])
+        exp = np.array([[0.014245668189244708, -0.011313215676737294, 0.01262021673696023], [0.03135494731512368, 0.0015038591483654345, -0.03404527050563938], [0.03259724693983638, 0.07839949834966449, 0.033484438405276276]])
         act = whitening_matrix([[-45.82,-25.35,-32.05,39.32], [28.12,-14.17,33.94,-22.47], [-43.96,37.21,2.99,21.92]])
         for i in range(exp.shape[0]):
             for j in range(exp.shape[1]):
                 self.assertAlmostEqual(exp[i][j], act[i][j])
 
-        exp = np.array([[2.33429106e-02,-1.21653850e-01, 8.89936312e-02, -1.13277181e-01], [1.23872419e-01, -1.17095658e-01, -1.94133604e-01, -1.23567732e-03], [-5.33813018e-01, -5.12797356e-01, -3.39456659e-02, 4.14046982e-01], [-2.79785626e+00, 6.53211759e-01, -2.16031127e+00, -2.97526630e+00]])
+        exp = np.array([[0.023342910587869133, -0.12165384962747014, 0.08899363123730368, -0.1132771806067438], [0.12387241888532186, -0.11709565785890363, -0.1941336043291668, -0.0012356773195523584], [0.5338130178481921, 0.5127973559490143, 0.03394566591585277, -0.41404698243612936], [2.7978562593515828, -0.6532117590551376, 2.1603112740043433, 2.975266304140435]])
         act = whitening_matrix([[-1,4.3,-1.1,-0.7,-1],[-5.6,-8,-3.2,3.4,-1.6],[7,-3.6,-2,-2.6,0.4],[-3.1,-1.1,4,5.6,1.7]])
         for i in range(exp.shape[0]):
             for j in range(exp.shape[1]):
